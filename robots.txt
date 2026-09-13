@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://solo-stack-gxdv.onrender.com/sitemap.xml
+Sitemap: https://forgealone.com/sitemap.xml

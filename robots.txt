@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://solostack.onrender.com/sitemap.xml
+Sitemap: https://solo-stack-gxdv.onrender.com/sitemap.xml

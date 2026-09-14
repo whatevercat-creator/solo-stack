@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Review — Forge Alone</title>
+<meta name="description" content="A practical, safety-first look at OpenClaw for solo builders: what it is, how to self-host it without getting hacked, and how it can plug into an x402-monetized API.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <nav class="site-nav">
+    <a class="brand" href="/"><span class="mark"></span>Forge Alone</a>
+    <div class="links">
+      <a href="/#reviews">Reviews</a>
+      <a href="/about.html">About</a>
+      <a href="/disclosure.html">Disclosure</a>
+    </div>
+  </nav>
+
+  <section style="margin-top:36px;">
+    <div class="eyebrow">AI Agents · Open-source</div>
+    <h1>OpenClaw: a genuinely useful AI agent, if you set it up like it can hurt you</h1>
+    <p class="lead">OpenClaw is a free, open-source AI assistant that runs on your own hardware and can message, browse, and act on your behalf. It's also, by its own maintainers' description, "untrusted code execution with persistent credentials." Both of those things are true at once, and this review is about respecting the second one.</p>
+
+    <div class="tag-row">
+      <span class="tag">Free & open-source</span>
+      <span class="tag">Self-hosted</span>
+      <span class="tag">No affiliate program</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="verdict-box">
+      <span class="label">Verdict</span>
+      <p>Worth running if you're willing to treat it the way you'd treat any process with standing access to your accounts and your machine — on isolated hardware, with tight allowlists, updated deliberately. Not worth running with default settings on your main computer, especially if that machine is anywhere near a wallet, an exchange login, or anything else you can't afford to lose.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What it actually is</h2>
+    <p>OpenClaw is stewarded by an independent nonprofit foundation, not a company selling you something — there's no subscription, no hosted tier, no token. It runs locally, integrates with messaging apps like WhatsApp, Telegram, and Discord, and handles the kind of tasks you'd otherwise hand a very literal assistant: managing email, organizing a calendar, checking in for a flight, browsing the web on your behalf. It's also become one of the most widely adopted open-source AI agent projects out there, which cuts both ways: a large community means fast development and a big library of community-built "skills," but it also means it's a large enough target that a real incident has already happened — more on that below.</p>
+  </section>
+
+  <section>
+    <h2>Setting it up without getting hacked</h2>
+    <p>The core architecture is a "Gateway" — a single process that routes every message, tool call, and skill it runs. By default it binds to localhost only, which is exactly where it should stay. The mistakes that actually get people burned are specific and avoidable:</p>
+    <div class="pros-cons">
+      <div class="pc-col good">
+        <h4>Do</h4>
+        <ul>
+          <li>Keep the Gateway bound to localhost or a private network — never expose it directly to the internet</li>
+          <li>Use Tailscale or an SSH tunnel for remote access instead of opening a port</li>
+          <li>Set explicit tool allowlists so it can't run arbitrary shell commands unsupervised</li>
+          <li>Use API keys instead of OAuth for a headless install</li>
+          <li>Run <code>openclaw security audit</code> after any config change, and back up its state regularly</li>
+          <li>Only install from the real sources — <code>github.com/openclaw/openclaw</code> or <code>openclaw.ai</code></li>
+        </ul>
+      </div>
+      <div class="pc-col warn">
+        <h4>Don't</h4>
+        <ul>
+          <li>Bind the Gateway to <code>0.0.0.0</code> without authentication</li>
+          <li>Leave the DM policy set to "open" instead of pairing or an allowlist</li>
+          <li>Grant every agent unrestricted tool access, especially file-editing and shell execution</li>
+          <li>Install community skills without reading them first — a real incident (dubbed "ClawHavoc," Jan 2026) found malicious skills in the community registry stealing credentials</li>
+          <li>Run it on the same machine that holds a crypto wallet, exchange session, or anything you'd hate to lose</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Running it on a Raspberry Pi</h2>
+    <p>This is the setup worth taking seriously if you're intrigued but don't want to hand a semi-autonomous agent the keys to your main computer: a $60–$80 Raspberry Pi is cheap enough to be disposable, and physically separate from anything that matters. A Pi 5 (4–8GB) is the top recommendation; a Pi 4 with 4GB RAM is called the "sweet spot" for most users. You'll need 64-bit Raspberry Pi OS Lite specifically — the 32-bit version won't work — and a USB SSD instead of a microSD card, both for speed and because an agent writing state constantly will wear out a memory card faster than you'd expect. Budget at least 2GB RAM and 16GB of storage for anything you actually want to rely on.</p>
+    <p class="callout"><b>The logic here is the same as the Ledger review's:</b> keep anything with standing access or spending ability off your primary device, on hardware you can unplug, wipe, or physically isolate without disrupting the rest of your life.</p>
+  </section>
+
+  <section>
+    <h2>Case study: pairing it with an x402-paid API</h2>
+    <p>OpenClaw's skill system is where this gets interesting for anyone building — not just using. A "skill" is a small file that tells an agent about an endpoint, what it costs, and when to call it; several existing skill packs already wire OpenClaw agents up to pay for data automatically using x402, the emerging standard for machine-to-machine micropayments in USDC on Base. The pattern: an agent hits a paid endpoint, gets a "402 Payment Required" response with a price attached, pays a few cents on-chain through a background facilitator, and retries the request with proof of payment. No subscription, no API key signup, no human approving the charge.</p>
+    <p>That means a self-hosted x402-monetized API — the kind covered on this site's Reditus-adjacent monetization angle — can, in principle, become something any OpenClaw user's agent discovers and pays for directly, just by installing a small skill file that points at it. It's a genuinely real mechanism, not a theoretical one: multiple independent projects already publish OpenClaw skills that do exactly this for other paid data services.</p>
+    <p class="callout"><b>Where this needs care:</b> receiving x402 payments this way is low-risk — you're just getting paid, nothing about your own credentials is exposed. Spending money through your own OpenClaw agent is a different story: that requires either a raw wallet private key in the skill's configuration or a keyless signing method. Never put a wallet holding real funds into that config directly — use a keyless/managed signing option where one exists, or a separate wallet with a small, deliberately limited balance reserved for exactly that purpose. Treat it like the hot-wallet-vs-cold-storage distinction from the Ledger review: convenience wallet for what an autonomous process touches, everything else stays out of its reach.</p>
+  </section>
+
+  <section>
+    <h2>Where it doesn't hold up</h2>
+    <div class="pros-cons">
+      <div class="pc-col good">
+        <h4>Where it holds up</h4>
+        <ul>
+          <li>Genuinely free — no paid tier, no vendor lock-in, no subscription to cancel later</li>
+          <li>Runs on hardware you control, including a $60 Raspberry Pi</li>
+          <li>Large, active community and a real skill ecosystem, including working x402 payment integrations</li>
+          <li>Security architecture is documented plainly, including where it can go wrong</li>
+        </ul>
+      </div>
+      <div class="pc-col warn">
+        <h4>Where it doesn't</h4>
+        <ul>
+          <li>Zero hand-holding — you are the security team, full stop</li>
+          <li>The skill ecosystem has already had one real malware incident; vetting is on you</li>
+          <li>Setting it up safely takes more technical comfort than "download and click next"</li>
+          <li>Not the right first AI-agent project for someone who isn't ready to read documentation before typing commands</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="muted" style="font-size:12.5px;">No affiliate link here — OpenClaw is run by a nonprofit with, in their own words, "nothing to sell you." This review exists because the tool is genuinely relevant to solo builders working with AI agents, not because of a commission.</p>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <a href="/about.html">About</a>
+      <a href="/disclosure.html">Disclosure</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/media-kit.html">Media Kit</a>
+    </div>
+    <div>&copy; 2026 Forge Alone.</div>
+  </footer>
+
+</div>
+</body>
+</html>

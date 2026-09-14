@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UGREEN NAS Review — Forge Alone</title>
+<meta name="description" content="A solo-developer's review of the UGREEN DXP series NAS: storage, Docker support, and running self-hosted AI agents on your own hardware.">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <nav class="site-nav">
+    <a class="brand" href="/"><span class="mark"></span>Forge Alone</a>
+    <div class="links">
+      <a href="/#reviews">Reviews</a>
+      <a href="/about.html">About</a>
+      <a href="/disclosure.html">Disclosure</a>
+    </div>
+  </nav>
+
+  <section style="margin-top:36px;">
+    <div class="eyebrow">Storage · Self-hosting</div>
+    <h1>UGREEN NAS: storage for the stuff a normal user never accumulates</h1>
+    <p class="lead">A casual home NAS review talks about photo backups and Plex. A solo builder fills the same box with dev environments, model weights, container images, self-hosted services, and backups of things that took real hours to make. The DXP series is where UGREEN's lineup gets serious enough for that.</p>
+
+    <div class="tag-row">
+      <span class="tag">DXP series (Intel/AMD)</span>
+      <span class="tag">Docker via UGOS Pro</span>
+      <span class="tag">Expandable RAM</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="verdict-box">
+      <span class="label">Verdict</span>
+      <p>Worth it once "external drive" stops being a real answer to your storage problem — which for a solo builder running local AI tools, backups, and side projects happens sooner than for a casual user. Stick to the DXP series specifically if Docker matters to you; UGREEN's cheaper DH-series models either don't support it or only support it in a limited, ARM64-only form.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What makes it different from a "normal" NAS</h2>
+    <p>Most NAS marketing is aimed at families backing up phone photos. That's a real use case, but it undersells what the DXP series can actually do: it runs UGOS Pro, which supports proper Docker containers on the Intel/AMD models — meaning it's not just a storage box, it's a small, always-on server you can run self-hosted software on. Dual M.2 NVMe slots mean you can put fast cache or a dedicated container/VM drive alongside the bulk spinning storage, instead of everything competing for the same disks.</p>
+    <p>The stock RAM (8GB DDR5 on the DXP4800 Plus) is fine for file-serving and light container use, but it's shared across the whole OS plus anything you run on it — not dedicated the way a single-purpose device's RAM would be. Both the Plus and Pro models support RAM upgrades well past stock, which matters more than it sounds once you're running multiple containers or something memory-hungry alongside normal NAS duties.</p>
+  </section>
+
+  <section>
+    <h2>Where it gets genuinely useful for a solo builder</h2>
+    <p>A few concrete things a NAS like this is good for beyond file storage: a home for large local model weights and datasets that don't belong on a laptop's drive; running self-hosted infrastructure (databases, monitoring, a private git server) that needs to be always-on without paying for cloud compute; and — relevant to the <a href="/reviews/openclaw.html">OpenClaw review</a> on this site — a Docker-capable, always-on machine that's separate from your daily-driver laptop, which is exactly the kind of isolation that review recommends for anything with standing tool access. It's not as clean an isolation boundary as a dedicated $60 Pi with nothing else on it, since your NAS is also holding your other backups, but for people who already have one running, it's a real option worth weighing.</p>
+  </section>
+
+  <section>
+    <div class="pros-cons">
+      <div class="pc-col good">
+        <h4>Where it holds up</h4>
+        <ul>
+          <li>Real Docker support on the DXP (Intel/AMD) models, not a locked-down appliance</li>
+          <li>Dual M.2 NVMe slots for cache or dedicated fast storage</li>
+          <li>RAM is upgradeable well past the stock configuration</li>
+          <li>10GbE networking on the higher-end models — actually useful once you're moving large model files or datasets around</li>
+        </ul>
+      </div>
+      <div class="pc-col warn">
+        <h4>Where it doesn't</h4>
+        <ul>
+          <li>Docker support varies a lot across UGREEN's lineup — the cheaper DH series either lacks it or only supports limited ARM64 containers</li>
+          <li>Stock RAM is workable but tight if you're running much beyond file-serving</li>
+          <li>Running an autonomous AI agent on the same box as your actual backups is a different risk trade-off than an isolated device — worth thinking through, not a reason to avoid it outright</li>
+          <li>Diskless models mean the drive cost is a separate, often larger, purchase</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <a class="btn" href="https://us.ugreen.com/" rel="sponsored noopener" target="_blank">See current UGREEN NAS pricing →</a>
+    <p class="muted" style="font-size:12.5px;margin-top:10px;"><!-- TODO: replace with approved affiliate tracking link --> This is a standard link today; it will route through our affiliate program once approved — see the <a href="/disclosure.html">disclosure</a>.</p>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <a href="/about.html">About</a>
+      <a href="/disclosure.html">Disclosure</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/media-kit.html">Media Kit</a>
+    </div>
+    <div>&copy; 2026 Forge Alone.</div>
+  </footer>
+
+</div>
+</body>
+</html>

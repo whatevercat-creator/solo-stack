@@ -234,3 +234,6 @@ footer .foot-links{ display:flex; gap: 16px; flex-wrap:wrap; }
   .site-nav{ padding-block: 16px 14px; gap: 10px; }
   .site-nav .links{ width: 100%; gap: 0; justify-content: space-between; flex-wrap: nowrap; font-size: 14px; }
 }
+.updated{ font-family:'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing:.04em; text-transform: uppercase; color: var(--ink-soft); margin: 4px 0 12px; }
+.notfound{ text-align:center; padding: 56px 0 8px; }
+.notfound .big{ font-family:'Archivo', sans-serif; font-weight:800; font-size: clamp(64px, 14vw, 120px); line-height:1; color: var(--accent); letter-spacing:-.03em; }

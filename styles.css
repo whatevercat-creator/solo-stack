@@ -194,3 +194,43 @@ footer{
 }
 footer a{ color: var(--ink-soft); }
 footer .foot-links{ display:flex; gap: 16px; flex-wrap:wrap; }
+
+/* --- imagery, hero actions, icons (Oct 2026) --- */
+.hero-actions{ display:flex; gap: 12px; flex-wrap: wrap; margin: 20px 0 22px; }
+.btn.ghost{ background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.btn.ghost:hover{ background: var(--accent-soft); opacity: 1; }
+.tool-card .thumb{
+  display:block; width: calc(100% + 44px); max-width: none; margin: -22px -22px 6px;
+  height: auto; aspect-ratio: 16 / 7; object-fit: cover; border-radius: 9px 9px 0 0;
+  border-bottom: 1px solid var(--line);
+}
+.tool-card .card-head{ display:flex; align-items:center; gap: 10px; }
+.card-icon{
+  width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+  background: var(--accent-soft); color: var(--accent);
+  display:grid; place-items:center;
+}
+.card-icon svg{ width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.guide-hero{ margin: 26px 0 0; }
+.guide-hero img{
+  display:block; width: 100%; height: auto; border-radius: 12px;
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.pin-save{
+  display:inline-flex; align-items:center; gap: 8px; font-weight: 700; font-size: 14px;
+  background: #e60023; color: #fff; text-decoration:none;
+  padding: 9px 16px; border-radius: 999px; margin-top: 16px;
+}
+.pin-save:hover{ opacity: .92; }
+.pin-save svg{ width: 16px; height: 16px; fill: currentColor; }
+.save-box{
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+  padding: 20px 22px; box-shadow: var(--shadow);
+  display:flex; align-items:center; justify-content:space-between; gap: 16px; flex-wrap: wrap;
+}
+.save-box p{ margin: 0; font-size: 15.5px; }
+.save-box .pin-save{ margin-top: 0; }
+@media (max-width: 560px){
+  .site-nav{ padding-block: 16px 14px; gap: 10px; }
+  .site-nav .links{ width: 100%; gap: 0; justify-content: space-between; flex-wrap: nowrap; font-size: 14px; }
+}

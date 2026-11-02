@@ -230,7 +230,8 @@ ul{ max-width: var(--prose); }
   margin-inline: calc(-1 * var(--gutter)); scroll-padding-inline: var(--gutter);
   scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
 }
-.swipe-row .pick{ flex: 0 0 min(260px, 76vw); scroll-snap-align: start; border-color: transparent; }
+.swipe-row .pick{ flex: 0 0 min(260px, 76vw); scroll-snap-align: start; border: 0; overflow: hidden; }
+.pick-img{ width: calc(100% + 36px); max-width: none; margin: -18px -18px 8px; aspect-ratio: 1 / 1; object-fit: cover; }
 @media (min-width: 960px){
   .swipe-row{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: visible; padding-inline: 0; margin-inline: 0; scroll-snap-type: none; }
 }

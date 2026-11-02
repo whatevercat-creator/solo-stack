@@ -31,22 +31,29 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<div class="shell">
-
-  <nav class="site-nav">
-    <a class="brand" href="/"><span class="mark"></span>Forge Alone</a>
-    <div class="links">
-      <a href="/#reviews">Reviews</a>
-      <a href="/#workspace">Workspace</a>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Forge Alone</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/workspace/desk-side-coffee-station.html">Coffee</a>
+      <a href="/workspace/inviting-home-office-desk-setup.html">Desk</a>
+      <a href="/workspace/gifts-for-people-who-work-from-home.html">Gifts</a>
+      <a href="/#reviews" aria-current="page">Software</a>
       <a href="/about.html">About</a>
-      <a href="/disclosure.html">Disclosure</a>
-    </div>
-  </nav>
+    </nav>
+    <a class="btn dark small nav-quiz" href="https://forgealone.involve.me/solo-builder-stack-quiz" target="_blank" rel="noopener">Take the quiz</a>
+  </div>
+</header>
+<main id="main" class="shell narrow">
 
-  <section style="margin-top:36px;">
+  <section class="page-top">
     <div class="eyebrow">AI Agents · Open-source</div>
     <h1>OpenClaw: a genuinely useful AI agent, if you set it up like it can hurt you</h1>
     <p class="lead">OpenClaw is a free, open-source AI assistant that runs on your own hardware and can message, browse, and act on your behalf. It's also, by its own maintainers' description, "untrusted code execution with persistent credentials." Both of those things are true at once, and this review is about respecting the second one.</p>
@@ -137,10 +144,13 @@
   </section>
 
   <section>
-    <p class="muted" style="font-size:12.5px;">OpenClaw itself has no affiliate program — it is run by a nonprofit with, in their own words, "nothing to sell you." The one affiliate link on this page is the Raspberry Pi kit on Amazon: as an Amazon Associate I earn from qualifying purchases, at no extra cost to you. See the <a href="/disclosure.html">disclosure</a> for details.</p>
+    <p class="muted fine">OpenClaw itself has no affiliate program — it is run by a nonprofit with, in their own words, "nothing to sell you." The one affiliate link on this page is the Raspberry Pi kit on Amazon: as an Amazon Associate I earn from qualifying purchases, at no extra cost to you. See the <a href="/disclosure.html">disclosure</a> for details.</p>
   </section>
 
-  <footer>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer-inner">
     <div class="foot-links">
       <a href="/about.html">About</a>
       <a href="/disclosure.html">Disclosure</a>
@@ -148,9 +158,9 @@
       <a href="/privacy.html">Privacy Policy</a>
       <a href="/media-kit.html">Media Kit</a>
     </div>
-    <div>&copy; 2026 Forge Alone.</div>
-  </footer>
-
-</div>
+    <p>Forge Alone is run by one person and paid for by affiliate commissions. As an Amazon Associate I earn from qualifying purchases. You never pay more for using these links.</p>
+    <p>&copy; 2026 Forge Alone.</p>
+  </div>
+</footer>
 </body>
 </html>

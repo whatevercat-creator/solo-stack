@@ -235,6 +235,9 @@ ul{ max-width: var(--prose); }
 .pick-img{ width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
 .pick-media.wide{ margin: 18px 0 0; border-radius: 18px; overflow: hidden; background: var(--sand); }
 .pick-media.wide .pick-img{ aspect-ratio: 3 / 2; }
+@media (min-width: 768px){
+  .pick-media.wide{ max-width: 640px; }
+}
 .pick-tag{
   position: absolute; left: 8px; bottom: 8px;
   padding: 2px 9px; border-radius: 999px;
